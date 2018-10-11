@@ -1,21 +1,20 @@
-# Nodegram
-## An image sharing social media web application built with React, Express, and MongoDB.
+# Pokechallenge
+A challenge to create a React application with the pokemon API
 
----
+## Instructions
+To run the project you need to install the dependencies
+``` 
+npm install
+```
+then 
+```
+npm run dev-server
+```
 
-# Road Map
-* Choose Client Framework ✓
-* Choose Server Framework ✓
-* Choose Database ✓
-* Create Basic UI Structure X
-* Create Registration/Login System X
-* Image Upload Functionality X
-* Profile Page Functionality X
-* Friend/Follower Functionality X
-* Friend/Follower Feed X
-* Explore Page X
+## Libraries Used
+* React
+* Pokemon API
 
----
+## Author
 
-##### This collaborative project was organized via r/WebDevBuddies.
-##### Discord: https://discord.gg/TxGgpT7
+![Alberto Jaime Le Baron](https://gitlab.com/anewmodern)
