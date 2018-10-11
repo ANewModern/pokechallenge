@@ -1,6 +1,6 @@
 import React from 'react'
 
-const RenderPokemon = (props) => (
+const RenderPokemon = (props) => ( // stateless component that displays the pokemon data picked from the parent
     <div className='pokemon__container'>
         <h1 className='pokedex'>Pokedex</h1>
         <h2 className='pokemon__title'>{props.pokemon.name}</h2>

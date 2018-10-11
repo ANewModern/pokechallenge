@@ -1,4 +1,4 @@
-export default class Pokemon {
+export default class Pokemon { // class for pokemon data
     constructor(data) {
         this.id = data.id;
         this.name = data.name;

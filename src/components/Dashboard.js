@@ -6,22 +6,22 @@ export default class Dashboard extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            pokemon: [],
-            poke: {}
+            pokemon: [], // stores the list of pokemon currently available
+            poke: {} // specific pokemon clicked on
         };
         this.handleClick = this.handleClick.bind(this)
     }
     componentDidMount() {
-        this.genList();
-        this.handleClick(1);
+        this.genList(); // fetches the list  of pokemon
+        this.handleClick(1); // fetches the first pokemon in the list
     }
-    genList = () => {
-        fetch(`https://pokeapi.co/api/v2/pokemon/`)
+    genList = () => { // function to fetch all pokemon data
+        fetch(`https://pokeapi.co/api/v2/pokemon/`) 
             .then(res => res.json())
             .then(data => {
                 const pokemon = data;
                 let list = pokemon.results.map((poke, i) => {
-                    if (i < 802) {
+                    if (i < 802) { // the api just from 802 to 10001  here
                         return <li key={i} className='list__item'><button className='poke__button' onClick={(e) => this.handleClick(i+1)}>{poke.name}</button></li>
                     } else {
                         return <li key={i} className='list__item'><button className='poke__button' onClick={(e) => this.handleClick(i+9199)}>{poke.name}</button></li>
@@ -33,7 +33,7 @@ export default class Dashboard extends React.Component {
             .catch(err => console.log(err));
 
     }
-    handleClick = (num) => {
+    handleClick = (num) => { // fetches the pokemon clicked on here
         fetch(`https://pokeapi.co/api/v2/pokemon/${num}/`)
             .then(res => res.json())
             .then(data => {
