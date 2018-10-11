@@ -19,4 +19,10 @@
 
 .poke__button {
     @include box(100%, auto, none, #DC0A2D);
+    border-bottom: 4px solid #95192D;
+    padding: 5px;
+}
+
+.poke__button::Active {
+    background: #95192D;
 }

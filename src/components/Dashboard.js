@@ -7,7 +7,8 @@ export default class Dashboard extends React.Component {
         super(props);
         this.state = {
             pokemon: [], // stores the list of pokemon currently available
-            poke: {} // specific pokemon clicked on
+            poke: {}, // specific pokemon clicked on
+            // index: 1 // index of pokemon chosen
         };
         this.handleClick = this.handleClick.bind(this)
     }
