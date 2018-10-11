@@ -2,13 +2,13 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Dashboard from './components/Dashboard';
 import 'normalize.css/normalize.css';
 import './styles/styles.scss';
 
 const app = (
     <div>
-        <h1>Title</h1>
-        <p>Paragraph</p>
+        <Dashboard />
     </div>
 );
 ReactDOM.render(app, document.getElementById('app'));
