@@ -1,0 +1,182 @@
+// Flex
+@mixin flex($flow: row nowrap, $justify: flex-start, $align: center) {
+    display: flex;
+    flex-flow: $flow;
+    justify-content: $justify;
+    align-items: $align;
+}
+
+@mixin box($width: 200px, $height: 100px, $border: none, $background: none, $pos: static) {
+    width: $width;
+    height: $height;
+    border: $border;
+    background: $background;
+    position: $pos;
+}
+
+// Transitions
+@mixin transition($setting, $time, $type: none) {
+    transition: $setting $time;
+    transition-timing-function: $type;
+}
+
+// Push to center
+@mixin push--auto {
+    margin: {
+        left: auto;
+        right: auto;
+    }
+}
+
+// Perspective
+@mixin perspective($perspective: 500px) {
+    perspective: $perspective;
+    -moz-perspective: $perspective;
+    -ms-perspective: $perspective;
+    -o-perspective: $perspective;
+    -webkit-perspective: $perspective;
+}
+
+// Transform
+@mixin transform($t) {
+    transform: $t;
+    -moz-transform: $t;
+    -ms-transform: $t;
+    -o-transform: $t;
+    -webkit-transform: $t;
+}
+
+// Transform Style
+@mixin transform-style($ts: preserve-3d) {
+    transform-style: $ts;
+    -moz-transform-style: $ts;
+    -ms-transform-style: $ts;
+    -o-transform-style: $ts;
+    -webkit-transform-style: $ts;
+}
+
+// Pseudo 
+@mixin pseudo($display: block, $pos: absolute, $content: '') {
+    content: $content;
+    display: $display;
+    position: $pos;
+}
+
+// Responsive Ratio 
+@mixin responsive-ratio($x, $y, $pseudo: false) {
+    $padding: unquote( ( $y / $x) * 100 + '%');
+    @if $pseudo {
+        &:before {
+            @include pseudo($pos: relative);
+            width: 100%;
+            padding-top: $padding;
+        }
+    }
+    @else {
+        padding-top: $padding;
+    }
+}
+
+// CSS TRIANGLES!!
+@mixin css-triangle($color, $direction, $size: 6px, $position: absolute, $round: false) {
+    @include pseudo($pos: $position);
+    width: 0;
+    height: 0;
+    @if $round {
+        border-radius: 3px;
+    }
+    @if $direction==down {
+        border-left: $size solid transparent;
+        border-right: $size solid transparent;
+        border-top: $size solid $color;
+        margin-top: 0 - round( $size / 2.5);
+    }
+    @else if $direction==up {
+        border-left: $size solid transparent;
+        border-right: $size solid transparent;
+        border-bottom: $size solid $color;
+        margin-bottom: 0 - round( $size / 2.5);
+    }
+    @else if $direction==right {
+        border-top: $size solid transparent;
+        border-bottom: $size solid transparent;
+        border-left: $size solid $color;
+        margin-right: -$size;
+    }
+    @else if $direction==left {
+        border-top: $size solid transparent;
+        border-bottom: $size solid transparent;
+        border-right: $size solid $color;
+        margin-left: -$size;
+    }
+}
+
+// Font Styles
+@mixin font-source-sans($size: false, $colour: false, $weight: false, $lh: false) {
+    font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
+    @if $size {
+        font-size: $size;
+    }
+    @if $colour {
+        color: $colour;
+    }
+    @if $weight {
+        font-weight: $weight;
+    }
+    @if $lh {
+        line-height: $lh;
+    }
+}
+
+// Placeholders
+@mixin input-placeholder {
+    &.placeholder {
+        @content;
+    }
+    &:-moz-placeholder {
+        @content;
+    }
+    &::-moz-placeholder {
+        @content;
+    }
+    &:-ms-input-placeholder {
+        @content;
+    }
+    &::-webkit-input-placeholder {
+        @content;
+    }
+}
+
+// Media queries
+$breakpoints: ( "phone": 400px, "phone-wide": 480px, "phablet": 560px, "tablet-small": 640px, "tablet": 768px, "tablet-wide": 1024px, "desktop": 1248px, "desktop-wide": 1440px);
+@mixin mq($width, $type: min) {
+    @if map_has_key($breakpoints, $width) {
+        $width: map_get($breakpoints, $width);
+        @if $type==max {
+            $width: $width - 1px;
+        }
+        @media only screen and (#{$type}-width: $width) {
+            @content;
+        }
+    }
+}
+
+// Z Index
+@function z($name) {
+    @if index($z-indexes, $name) {
+        @return (length($z-indexes) - index($z-indexes, $name))+1;
+    }
+    @else {
+        @warn 'There is no item "#{$name}" in this list; choose one of: #{$z-indexes}';
+        @return null;
+    }
+}
+
+$z-indexes: ( "outdated-browser", "modal", "site-header", "page-wrapper", "site-footer");
+// Truncate
+@mixin truncate($truncation-boundary) {
+    max-width: $truncation-boundary;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
