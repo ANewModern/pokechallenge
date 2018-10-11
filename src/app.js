@@ -7,7 +7,7 @@ import 'normalize.css/normalize.css';
 import './styles/styles.scss';
 
 const app = (
-    <div>
+    <div className='app'>
         <Dashboard />
     </div>
 );

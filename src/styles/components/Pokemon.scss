@@ -1,0 +1,9 @@
+.pokemon__container {
+    @include box(300px, 580px);
+    @include flex(column nowrap, space-between, center);
+
+    h1, h2, p {
+        padding: 0;
+        margin: 0;
+    }
+}
