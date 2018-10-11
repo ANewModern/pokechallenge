@@ -17,4 +17,4 @@ npm run dev-server
 
 ## Author
 
-![Alberto Jaime Le Baron](https://gitlab.com/anewmodern)
+[Alberto Jaime Le Baron](https://gitlab.com/anewmodern)
